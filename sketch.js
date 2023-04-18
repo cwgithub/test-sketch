@@ -1,12 +1,16 @@
 let angle = 0.03;
 let cover;
+let mp3;
 
 function preload() {
   cover = loadImage("./assets/DontShoutIt.jpg");
+  mp3 = loadSound("./assets/DontShoutIt.mp3");
 }
 
 function setup() {
   createCanvas(1000, 1000, WEBGL);
+
+  mp3.play();
 }
 
 function draw() {

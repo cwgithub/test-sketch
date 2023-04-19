@@ -4,8 +4,8 @@ let coverFront;
 let clock;
 let mp3;
 let canvas;
+let graphics;
 let playing = false;
-let scaler;
 
 function preload() {
   coverBack = loadImage("./assets/DontShoutIt.jpg");
@@ -16,24 +16,29 @@ function preload() {
 
 function setup() {
   canvas = createCanvas(1000, 1000, WEBGL);
-  scaler = width / 3800;
   canvas.mousePressed(canvasPressed);
+
+  graphics = createGraphics(1000, 1000);
+  graphics.textAlign(CENTER, CENTER);
+  graphics.textSize(64);
+  graphics.fill(0, 255, 0);
+  graphics.text("Click mouse to play/pause", 500, 500);
 }
 
 function draw() {
   background(237, 206, 159);
   noStroke();
 
-  let degY = map(mouseX, 0, width, PI / 6, -PI / 4);
-  let degX = map(mouseY, 0, height, -PI / 6, PI / 4);
+  let degY = map(mouseX, 0, width, PI / 4, -PI / 4);
+  let degX = map(mouseY, 0, height, -PI / 4, PI / 4);
   rotateY(degY);
   rotateX(degX);
 
   texture(coverBack);
 
-  let zPlane = 00;
+  let zPlane = -100;
   let zTint = 255;
-  let tintAdj = 10;
+  let tintAdj = 25;
 
   for (let layer = 0; layer <= 5; layer++) {
     push();
@@ -46,7 +51,12 @@ function draw() {
     pop();
   }
 
-  pop();
+  if (!playing) {
+    push();
+    texture(graphics);
+    plane(750, 750);
+    pop();
+  }
 
   angle += 0.02;
 }

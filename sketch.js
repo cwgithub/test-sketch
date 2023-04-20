@@ -24,6 +24,7 @@ function preload() {
 }
 
 function setup() {
+  pixelDensity(1);
   canvas = createCanvas(1000, 1000, WEBGL);
   canvas.mousePressed(canvasPressed);
 
@@ -31,7 +32,9 @@ function setup() {
   graphics.textAlign(CENTER, CENTER);
   graphics.textSize(64);
   graphics.fill(0, 255, 0);
-  graphics.text("Click mouse to play/pause", 500, 500);
+  // graphics.text("Click mouse to play/pause", 500, 500);
+  const str = `Pixel density ${pixelDensity()} Dsp density ${displayDensity()}`;
+  graphics.text(str, 500, 500);
 }
 
 function draw() {

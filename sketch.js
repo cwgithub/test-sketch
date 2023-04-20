@@ -2,6 +2,8 @@ let angle = 0.03;
 let coverBack;
 let coverFront;
 let clock;
+let megaphone;
+let papersnakes;
 let mp3;
 let canvas;
 let graphics;
@@ -9,8 +11,9 @@ let playing = false;
 
 function preload() {
   coverBack = loadImage("./assets/DontShoutIt.jpg");
-  coverFront = loadImage("./assets/DontShoutIt-front.jpg");
-  clock = loadImage("./assets/clock.jpg");
+  clock = loadImage("./assets/DontShoutIt.Clock.Trans.png");
+  megaphone = loadImage("./assets/DontShoutIt.Megaphone.Trans.png");
+  papersnakes = loadImage("./assets/DontShoutIt.Papersnakes.Trans.png");
   mp3 = loadSound("./assets/DontShoutIt.mp3");
 }
 
@@ -34,17 +37,32 @@ function draw() {
   rotateY(degY);
   rotateX(degX);
 
-  texture(coverBack);
-
   let zPlane = -100;
   let zTint = 255;
   let tintAdj = 25;
 
-  for (let layer = 0; layer <= 5; layer++) {
+  for (let layer = 0; layer <= 3; layer++) {
+    switch (layer) {
+      case 0:
+        texture(coverBack);
+        break;
+      case 1:
+        texture(clock);
+        break;
+      case 2:
+        texture(megaphone);
+        break;
+      case 3:
+        texture(papersnakes);
+        break;
+    }
+
     push();
-    tint(255, zTint);
-    zTint -= tintAdj;
-    tintAdj += tintAdj;
+
+    // tint(255, zTint);
+    // zTint -= tintAdj;
+    // tintAdj += tintAdj;
+
     translate(0, 0, zPlane);
     zPlane += 20;
     plane(750, 750);

@@ -9,11 +9,17 @@ let canvas;
 let graphics;
 let playing = false;
 
+const path = "1000x1000";
+
+function load(imageName) {
+  return loadImage(`./assets/${path}/${imageName}`);
+}
+
 function preload() {
-  coverBack = loadImage("./assets/DontShoutIt.jpg");
-  clock = loadImage("./assets/DontShoutIt.Clock.Trans.png");
-  megaphone = loadImage("./assets/DontShoutIt.Megaphone.Trans.png");
-  papersnakes = loadImage("./assets/DontShoutIt.Papersnakes.Trans.png");
+  coverBack = load("DontShoutIt.jpg");
+  clock = load("DontShoutIt.Clock.Trans.png");
+  megaphone = load("DontShoutIt.Megaphone.Trans.png");
+  papersnakes = load("DontShoutIt.Papersnakes.Trans.png");
   mp3 = loadSound("./assets/DontShoutIt.mp3");
 }
 

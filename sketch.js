@@ -102,7 +102,7 @@ function draw() {
 
     translate(0, 0, zPlane);
     zPlane += 20;
-    plane(width / 2, width / 2);
+    plane(width * 0.75, width * 0.75);
     pop();
   }
 

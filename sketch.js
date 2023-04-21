@@ -1,13 +1,17 @@
 let angle = 0.03;
-let coverBack;
+let unionJack;
 let coverFront;
 let clock;
 let megaphone;
 let papersnakes;
 let mp3;
 let canvas;
-let graphics;
+let textLine1;
 let playing = false;
+
+let offsetX;
+let offsetY;
+let direction;
 
 const path = "1000x1000";
 
@@ -16,7 +20,7 @@ function load(imageName) {
 }
 
 function preload() {
-  coverBack = load("DontShoutIt.jpg");
+  unionJack = load("DontShoutIt.jpg");
   clock = load("DontShoutIt.Clock.Trans.png");
   megaphone = load("DontShoutIt.Megaphone.Trans.png");
   papersnakes = load("DontShoutIt.Papersnakes.Trans.png");
@@ -28,21 +32,46 @@ function setup() {
   canvas = createCanvas(1000, 1000, WEBGL);
   canvas.mousePressed(canvasPressed);
 
-  graphics = createGraphics(1000, 1000);
-  graphics.textAlign(CENTER, CENTER);
-  graphics.textSize(64);
-  graphics.fill(0, 255, 0);
+  textLine1 = createGraphics(1000, 1000);
+  textLine1.textAlign(CENTER, CENTER);
+  textLine1.textSize(64);
+  textLine1.fill(0, 255, 0);
   // graphics.text("Click mouse to play/pause", 500, 500);
   const str = `Pixel density ${pixelDensity()} Dsp density ${displayDensity()}`;
-  graphics.text(str, 500, 500);
+  textLine1.text(str, 500, 500);
+
+  offsetX = 500;
+  offsetY = 500;
+  direction = "left";
 }
 
 function draw() {
   background(237, 206, 159);
   noStroke();
 
-  let degY = map(mouseX, 0, width, PI / 4, -PI / 4);
-  let degX = map(mouseY, 0, height, -PI / 4, PI / 4);
+  //  offsetX = mouseX;
+  //  offsetY = mouseY;
+
+  if (offsetX >= width && direction === "right") {
+    direction = "left";
+  }
+
+  if (offsetX <= 0 && direction === "left") {
+    direction = "right";
+  }
+
+  if (direction === "right") {
+    offsetX += 10;
+    offsetY += 10;
+  }
+
+  if (direction === "left") {
+    offsetX -= 10;
+    offsetY -= 10;
+  }
+
+  let degY = map(offsetX, 0, width, PI / 4, -PI / 4);
+  let degX = map(offsetX, 0, height, -PI / 4, PI / 4);
   rotateY(degY);
   rotateX(degX);
 
@@ -53,7 +82,7 @@ function draw() {
   for (let layer = 0; layer <= 3; layer++) {
     switch (layer) {
       case 0:
-        texture(coverBack);
+        texture(unionJack);
         break;
       case 1:
         texture(clock);
@@ -80,7 +109,7 @@ function draw() {
 
   if (!playing) {
     push();
-    texture(graphics);
+    texture(textLine1);
     plane(750, 750);
     pop();
   }

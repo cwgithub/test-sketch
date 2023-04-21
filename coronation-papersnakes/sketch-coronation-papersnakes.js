@@ -15,7 +15,7 @@ function load(imageName) {
 }
 
 function preload() {
-  unionJack = load("union-jack.gif");
+  cover = load("union-jack.gif");
   papersnakes = load("papersnakes.png");
   mp3 = loadSound("/assets/DontShoutIt.mp3");
 }
@@ -45,7 +45,7 @@ function draw() {
   noStroke();
 
   push();
-  texture(unionJack);
+  texture(cover);
   translate(0, 0, -10);
   box(640, 400, 25);
   pop();

@@ -1,5 +1,5 @@
 let angle = 0.03;
-let unionJack;
+let cover;
 let coverFront;
 let clock;
 let megaphone;
@@ -20,7 +20,7 @@ function load(imageName) {
 }
 
 function preload() {
-  unionJack = load("DontShoutIt.jpg");
+  cover = load("DontShoutIt.jpg");
   clock = load("DontShoutIt.Clock.Trans.png");
   megaphone = load("DontShoutIt.Megaphone.Trans.png");
   papersnakes = load("DontShoutIt.Papersnakes.Trans.png");
@@ -29,13 +29,14 @@ function preload() {
 
 function setup() {
   pixelDensity(1);
-  canvas = createCanvas(1000, 1000, WEBGL);
-  canvas.mousePressed(canvasPressed);
+  canvas = createCanvas(windowWidth, windowHeight, WEBGL);
+  // canvas.mousePressed(canvasPressed);
 
   textLine1 = createGraphics(1000, 1000);
   textLine1.textAlign(CENTER, CENTER);
   textLine1.textSize(64);
   textLine1.fill(0, 255, 0);
+
   // graphics.text("Click mouse to play/pause", 500, 500);
   const str = `Pixel density ${pixelDensity()} Dsp density ${displayDensity()}`;
   textLine1.text(str, 500, 500);
@@ -48,14 +49,12 @@ function setup() {
 function draw() {
   background(237, 206, 159);
   noStroke();
-
   //  offsetX = mouseX;
   //  offsetY = mouseY;
 
   if (offsetX >= width && direction === "right") {
     direction = "left";
   }
-
   if (offsetX <= 0 && direction === "left") {
     direction = "right";
   }
@@ -82,7 +81,7 @@ function draw() {
   for (let layer = 0; layer <= 3; layer++) {
     switch (layer) {
       case 0:
-        texture(unionJack);
+        texture(cover);
         break;
       case 1:
         texture(clock);
@@ -103,7 +102,7 @@ function draw() {
 
     translate(0, 0, zPlane);
     zPlane += 20;
-    plane(750, 750);
+    plane(width / 2, width / 2);
     pop();
   }
 

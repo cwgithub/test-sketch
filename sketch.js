@@ -30,6 +30,7 @@ function preload() {
 function setup() {
   pixelDensity(1);
   canvas = createCanvas(windowWidth, windowHeight, WEBGL);
+
   // canvas.mousePressed(canvasPressed);
 
   textLine1 = createGraphics(1000, 1000);
@@ -44,6 +45,11 @@ function setup() {
   offsetX = 500;
   offsetY = 500;
   direction = "left";
+}
+
+function mousePressed() {
+  let fs = fullscreen();
+  fullscreen(!fs);
 }
 
 function draw() {

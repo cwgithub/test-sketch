@@ -47,12 +47,6 @@ function setup() {
   direction = "left";
 }
 
-// function mousePressed() {
-//   alert("Fullscreen!");
-//   let fs = fullscreen();
-//   fullscreen(!fs);
-// }
-
 function touchStarted() {
   if (!fullscreen()) {
     fullscreen(true);

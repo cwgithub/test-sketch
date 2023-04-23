@@ -49,6 +49,14 @@ function setup() {
   // fullscreen(true);
 }
 
+function mousePressed() {
+  if (!fullscreen()) {
+    fullscreen(true);
+    const fs = fullscreen();
+    alert(`mousePressed = ${fs}`);
+  }
+}
+
 function touchStarted() {
   if (!fullscreen()) {
     fullscreen(true);

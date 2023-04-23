@@ -83,7 +83,7 @@ document.ontouchmove = function (event) {
 
 function draw() {
   // background(237, 206, 159);
-  background("pink");
+  background("yellow");
   noStroke();
   //  offsetX = mouseX;
   //  offsetY = mouseY;

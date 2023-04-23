@@ -45,9 +45,14 @@ function setup() {
   offsetX = 500;
   offsetY = 500;
   direction = "left";
+
+  // fullscreen(true);
 }
 
 function touchStarted() {
+  const fs = fullscreen();
+
+  // alert(`touchStarted = ${fs}`);
   if (!fullscreen()) {
     fullscreen(true);
   }

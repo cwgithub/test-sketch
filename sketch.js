@@ -50,11 +50,10 @@ function setup() {
 }
 
 function touchStarted() {
-  const fs = fullscreen();
-
-  // alert(`touchStarted = ${fs}`);
   if (!fullscreen()) {
     fullscreen(true);
+    const fs = fullscreen();
+    alert(`touchStarted = ${fs}`);
   }
 }
 

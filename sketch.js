@@ -48,6 +48,7 @@ function setup() {
 }
 
 function mousePressed() {
+  alert("Fullscreen!");
   let fs = fullscreen();
   fullscreen(!fs);
 }
@@ -66,13 +67,13 @@ function draw() {
   }
 
   if (direction === "right") {
-    offsetX += 10;
-    offsetY += 10;
+    offsetX += 0.5;
+    offsetY += 0.5;
   }
 
   if (direction === "left") {
-    offsetX -= 10;
-    offsetY -= 10;
+    offsetX -= 0.5;
+    offsetY -= 0.5;
   }
 
   let degY = map(offsetX, 0, width, PI / 4, -PI / 4);
@@ -84,7 +85,7 @@ function draw() {
   let zTint = 255;
   let tintAdj = 25;
 
-  for (let layer = 0; layer <= 3; layer++) {
+  for (let layer = 0; layer <= 0; layer++) {
     switch (layer) {
       case 0:
         texture(cover);
@@ -112,12 +113,12 @@ function draw() {
     pop();
   }
 
-  if (!playing) {
-    push();
-    texture(textLine1);
-    plane(750, 750);
-    pop();
-  }
+  // if (!playing) {
+  //   push();
+  //   texture(textLine1);
+  //   plane(750, 750);
+  //   pop();
+  // }
 
   angle += 0.02;
 }
